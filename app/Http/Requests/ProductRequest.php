@@ -29,8 +29,11 @@ class ProductRequest extends FormRequest
             
             'name' => 'required|min:3|max:255',
             'description' => 'required|min:5|max:255',
-            'file' => 'file|mimes:png,jpg,svg,jpeg,gif|max:2048',
-            'file' => 'file|mimes:png,jpg,svg,jpeg,gif|max:2048',
+            'price' => 'required',
+            'category_id' => 'required',
+            'availability' => 'required',
+            'image_file' => 'required|file|mimes:png,jpg,svg,jpeg,gif|max:2048',
+            'pdf_file' => 'required|file|mimes:pdf|max:2048',
         ];
     }
 

@@ -34,7 +34,7 @@
         <a class="btn closepopup"><i class="icon icon anm anm-times-l"></i></a>
         <!-- Modal content-->
         <div class="display-table splash-bg">
-          <div class="display-table-cell width40"><img src="{{ asset('images/logo/library.jpg" alt="Join Our Mailing List" title="Join Our Mailing List" /> </div>
+          <div class="display-table-cell width40"><img src="{{ asset('images/logo/library.jpg') }}" alt="Join Our Mailing List" title="Join Our Mailing List" /> </div>
           <div class="display-table-cell width60 text-center">
             <div class="newsletter-left">
               <h2>Join Our Mailing List</h2>

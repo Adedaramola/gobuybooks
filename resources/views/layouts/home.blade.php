@@ -34,7 +34,7 @@
         <a class="btn closepopup"><i class="icon icon anm anm-times-l"></i></a>
         <!-- Modal content-->
         <div class="display-table splash-bg">
-          <div class="display-table-cell width40"><img src="{{ asset('images/logo/library.jpg" alt="Join Our Mailing List" title="Join Our Mailing List" /> </div>
+          <div class="display-table-cell width40"><img src="{{ asset('images/logo/library.jpg') }}" alt="Join Our Mailing List" title="Join Our Mailing List" /> </div>
           <div class="display-table-cell width60 text-center">
             <div class="newsletter-left">
               <h2>Join Our Mailing List</h2>
@@ -63,16 +63,17 @@
 	<!-- End Newsletter Popup -->
     
     <!-- Including Jquery -->
-    <script src="../js/vendor/jquery-3.3.1.min.js"></script>
-    <script src="../js/vendor/modernizr-3.6.0.min.js"></script>
-    <script src="../js/vendor/jquery.cookie.js"></script>
-    <script src="../js/vendor/wow.min.js"></script>
+    <script src="{{asset('/js/vendor/jquery-3.3.1.min.js')}}"></script>
+    <script src="{{asset('/js/vendor/modernizr-3.6.0.min.js')}}"></script>
+    <script src="{{asset('/js/vendor/jquery.cookie.js')}}"></script>
+    <script src="{{asset('/js/vendor/wow.min.js')}}"></script>
     <!-- Including Javascript -->
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/plugins.js"></script>
-    <script src="../js/popper.min.js"></script>
-    <script src="../js/lazysizes.js"></script>
-    <script src="../js/main.js"></script>
+    <script src="{{asset('/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('/js/plugins.js')}}"></script>
+    <script src="{{asset('/js/popper.min.js')}}"></script>
+    <script src="{{asset('/js/lazysizes.js')}}"></script>
+    <script src="{{asset('/js/main.js')}}"></script>
+    <script src="{{asset('/js/app.js')}}"></script>
     <!--For Newsletter Popup-->
     <script>
         jQuery(document).ready(function(){  

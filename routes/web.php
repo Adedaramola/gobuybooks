@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SiteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [SiteController::class, 'index']);
+Route::get('/shop', [SiteController::class, 'shop']);
+Route::get('/shop/category/{id}', [SiteController::class, 'shopCategory']);
+Route::get('/short-description/{id}', [SiteController::class, 'short_description']);

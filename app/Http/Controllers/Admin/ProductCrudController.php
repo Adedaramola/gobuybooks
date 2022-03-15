@@ -48,8 +48,9 @@ class ProductCrudController extends CrudController
     protected function setupListOperation()
     {
 
-        CRUD::column('category_id');
+        CRUD::column('id');
         CRUD::column('name');
+        CRUD::column('category_id');
         CRUD::column('description');
         CRUD::column('price');
         CRUD::column('availability');
@@ -79,7 +80,7 @@ class ProductCrudController extends CrudController
         CRUD::field('description');
         CRUD::field('category_id')->size(6);
         CRUD::field('price')->size(6);
-        CRUD::field('availability')->type('select_from_array')->options(GlobalVars::PRODUCT_AVAILABILITY);
+        CRUD::field('availability')->type('select_from_array')->options(GlobalVars::AVAILABILITY);
         CRUD::field('image_file')->type('upload')->upload(true)->label('Product Image')->size(6);
         CRUD::field('pdf_file')->type('upload')->upload(true)->label('PDF file')->size(6);
 
@@ -90,6 +91,30 @@ class ProductCrudController extends CrudController
          */
     }
 
+    public function store()
+    {
+        $this->crud->setRequest($this->crud->validateRequest());
+        $this->crud->unsetValidation(); // validation has already been run
+
+        $data = $this->crud->getStrippedSaveRequest();
+
+        $uploadedFileUrl = Cloudinary::uploadFile($data['image_file']->getRealPath())->getSecurePath();
+        $uploadedFileUrlPdf = Cloudinary::uploadFile($data['pdf_file']->getRealPath())->getSecurePath();
+
+        $user = Product::create([
+            'name' => $data['name'],
+            'description' => $data['description'],
+            'price' => $data['price'],
+            'category_id' => $data['category_id'],
+            'availability' => $data['availability'],
+            'image_path' => $uploadedFileUrl,
+            'file_path' => $uploadedFileUrlPdf,
+        ]);
+
+
+        return redirect('admin/product');
+    }
+
     /**
      * Define what happens when the Update operation is loaded.
      * 
@@ -98,6 +123,11 @@ class ProductCrudController extends CrudController
      */
     protected function setupUpdateOperation()
     {
-        $this->setupCreateOperation();
+        // $this->setupCreateOperation();
+        CRUD::field('name')->label('Title');
+        CRUD::field('description');
+        CRUD::field('category_id')->size(6);
+        CRUD::field('price')->size(6);
+        CRUD::field('availability')->type('select_from_array')->options(GlobalVars::AVAILABILITY);
     }
 }
