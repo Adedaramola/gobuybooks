@@ -65,7 +65,7 @@
                                 <div class="product-single__description rte mb-5">
                                     <p>{{$product[0]->description}}</p>
                                 </div>
-                                <form method="post" action="http://annimexweb.com/cart/add" id="product_form_10508262282" accept-charset="UTF-8" class="product-form product-form-product-template hidedropdown" enctype="multipart/form-data">
+                                <form id="product_form_10508262282" class="product-form product-form-product-template hidedropdown">
                                     <!-- Product Action -->
                                     <div class="product-action clearfix">
                                         <div class="product-form__item--quantity">
@@ -78,7 +78,7 @@
                                             </div>
                                         </div>                                
                                         <div class="product-form__item--submit">
-                                            <button type="button" name="add" class="btn product-form__cart-submit">
+                                            <button type="button" name="add" class="btn product-form__cart-submit" onclick="addToCart('{{$product[0]->id}}', '{{$product[0]->name}}', '{{$product[0]->price}}', `${document.querySelector('#Quantity').value}`, '{{$product[0]->image_path}}')">
                                                 <span>Add to cart</span>
                                             </button>
                                         </div>

@@ -19,6 +19,8 @@ class Product extends Model
         'availability',
         'image_path',
         'file_path',
+        'audio',
+        'audio_status',
     ];
 
     public function category()

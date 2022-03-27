@@ -56,6 +56,8 @@ class ProductCrudController extends CrudController
         CRUD::column('availability');
         CRUD::column('image_path')->label('Product Image');
         CRUD::column('file_path')->label('PDF File');
+        CRUD::column('audio');
+        CRUD::column('audio_status')->label('Audio Free?');
         CRUD::column('created_at');
 
         /**
@@ -83,6 +85,8 @@ class ProductCrudController extends CrudController
         CRUD::field('availability')->type('select_from_array')->options(GlobalVars::AVAILABILITY);
         CRUD::field('image_file')->type('upload')->upload(true)->label('Product Image')->size(6);
         CRUD::field('pdf_file')->type('upload')->upload(true)->label('PDF file')->size(6);
+        CRUD::field('audio')->size(6);
+        CRUD::field('audio_status')->type('enum')->label('Audio Free?')->size(6);
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
@@ -105,6 +109,8 @@ class ProductCrudController extends CrudController
             'name' => $data['name'],
             'description' => $data['description'],
             'price' => $data['price'],
+            'audio' => $data['audio'],
+            'audio_status' => $data['audio_status'],
             'category_id' => $data['category_id'],
             'availability' => $data['availability'],
             'image_path' => $uploadedFileUrl,
@@ -128,6 +134,7 @@ class ProductCrudController extends CrudController
         CRUD::field('description');
         CRUD::field('category_id')->size(6);
         CRUD::field('price')->size(6);
-        CRUD::field('availability')->type('select_from_array')->options(GlobalVars::AVAILABILITY);
+        CRUD::field('audio_status')->type('enum')->size(6)->label('Audio Free?');
+        CRUD::field('availability')->type('select_from_array')->options(GlobalVars::AVAILABILITY)->size(6);
     }
 }

@@ -17,15 +17,21 @@
                     <p class="phone-no"><i class="anm anm-phone-s"></i> 080 6973 5321</p>
                 </div>
                 <div class="col-sm-4 col-md-4 col-lg-4 d-none d-lg-none d-md-block d-lg-block">
-                	<div class="text-center"><p class="top-header_middle-text"> Worldwide Express Shipping</p></div>
+                	<div class="text-center"><p class="top-header_middle-text">Welcome to Gobuybooks</p></div>
                 </div>
                 <div class="col-2 col-sm-4 col-md-3 col-lg-4 text-right">
                 	<span class="user-menu d-block d-lg-none"><i class="anm anm-user-al" aria-hidden="true"></i></span>
+                    @if($user == null)
                     <ul class="customer-links list-inline">
-                        <li><a href="login.html">Login</a></li>
-                        <li><a href="register.html">Create Account</a></li>
-                        <li><a href="wishlist.html">Wishlist</a></li>
+                        <li><a href="/login">Login</a></li>
+                        <li><a href="/register">Create Account</a></li>
                     </ul>
+                    @else
+                    <ul class="customer-links list-inline">
+                        <li><a>Welcome, {{ $user['name'] }}</a></li>
+                        <li><a href="/logout">Logout</a></li>
+                    </ul>
+                    @endif
                 </div>
             </div>
         </div>
@@ -37,7 +43,7 @@
             <div class="row align-items-center">
             	<!--Desktop Logo-->
                 <div class="logo col-md-2 col-lg-2 d-none d-lg-block">
-                    <a href="index.html">
+                    <a href="/">
                     	<img src="{{ asset('images/logo/logo.png') }}" alt="GoBuyBooks" title="GoBuyBooks" />
                     </a>
                 </div>
@@ -63,7 +69,7 @@
                 <!--Mobile Logo-->
                 <div class="col-6 col-sm-6 col-md-6 col-lg-2 d-block d-lg-none mobile-logo">
                 	<div class="logo">
-                        <a href="index.html">
+                        <a href="/">
                             <img src="{{ asset('images/logo/logo.png') }}" alt="GoBuyBooks" title="GoBuyBooks" />
                         </a>
                     </div>
@@ -79,7 +85,7 @@
                         <div id="header-cart" class="block block-cart">
                             <div class="total">
                             	<div class="total-in">
-                                	<span class="label">Cart Subtotal:</span><span class="product-price"><span class="money">NGN 0</span></span>
+                                	<span class="label">Cart Subtotal:</span><span class="product-price"><span class="money" id="total_amount">NGN 0</span></span>
                                 </div>
                                  <div class="buttonSet text-center">
                                     <a href="/cart" class="btn btn-secondary btn--small">View Cart</a>
@@ -101,9 +107,9 @@
     <div class="mobile-nav-wrapper" role="navigation">
 		<div class="closemobileMenu"><i class="icon anm anm-times-l pull-right"></i> Close Menu</div>
         <ul id="MobileNav" class="mobile-nav">
-        	<li class="lvl1 parent megamenu"><a href="index.html">Home <i class="anm anm-plus-l"></i></a></li>
-            <li class="lvl1 parent megamenu"><a href="/shop.html">Book Shop <i class="anm anm-plus-l"></i></a></li>
-        	<li class="lvl1 parent megamenu"><a href="">Product <i class="anm anm-plus-l"></i></a></li>
+        	<li class="lvl1 parent megamenu"><a href="/">Home <i class="anm anm-plus-l"></i></a></li>
+            <li class="lvl1 parent megamenu"><a href="/shop">Book Shop <i class="anm anm-plus-l"></i></a></li>
+        	<li class="lvl1 parent megamenu"><a href="/shop">Product <i class="anm anm-plus-l"></i></a></li>
       </ul>
 	</div>
 	<!--End Mobile Menu-->
@@ -111,8 +117,10 @@
     <script>
         let cartItems = JSON.parse(localStorage.getItem('cart'));
         if(cartItems){
-            console.log(JSON.parse(localStorage.getItem('cart')));
+            let total = 0;
             document.querySelector('#CartCount').innerHTML = cartItems.length;
+            cartItems.forEach(item => total += (parseInt(item.price) * item.quantity));
+            document.querySelector('#total_amount').innerHTML = 'NGN ' + total.toLocaleString();
         }else{
             document.querySelector('#CartCount').innerHTML = 0;
         }

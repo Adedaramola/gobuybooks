@@ -15,6 +15,21 @@ use App\Http\Controllers\SiteController;
 */
 
 Route::get('/', [SiteController::class, 'index']);
+
+Route::get('/register', [SiteController::class, 'registerShow']);
+Route::post('/register', [SiteController::class, 'register']);
+
+Route::get('/logout', [SiteController::class, 'logout']);
+
+Route::get('/login', [SiteController::class, 'loginShow']);
+Route::post('/login', [SiteController::class, 'login']);
+
 Route::get('/shop', [SiteController::class, 'shop']);
 Route::get('/shop/category/{id}', [SiteController::class, 'shopCategory']);
 Route::get('/short-description/{id}', [SiteController::class, 'short_description']);
+
+Route::get('/cart', [SiteController::class, 'cart']);
+
+Route::get('/checkout', [SiteController::class, 'checkout']);
+
+Route::post('/order', [SiteController::class, 'order']);

@@ -4,6 +4,7 @@
 <!-- belle/index.html   11 Nov 2019 12:16:10 GMT -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <title>{{ config('app.name', 'GoBuyBooks') }} @yield('title')</title>
 <meta name="description" content="description">

@@ -147,7 +147,7 @@
 
                                         <!-- Start product button -->
                                         <form class="variants add">
-                                            <button class="btn btn-addto-cart" type="button" tabindex="0" onclick="addToCart('{{$p->id}}', '{{$p->name}}', '{{$p->price}}')">Add To Cart</button>
+                                            <button class="btn btn-addto-cart" type="button" tabindex="0" onclick="addToCart('{{$p->id}}', '{{$p->name}}', '{{$p->price}}', '1', '{{$p->image_path}}')">Add To Cart</button>
                                         </form>
                                         <div class="button-set">
                                             <a href="javascript:void(0)" title="Quick View" class="quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">

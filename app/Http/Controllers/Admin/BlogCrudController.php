@@ -2,22 +2,28 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\UserRequest;
+use App\Models\Blog;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Redirect;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use App\Http\Requests\BlogRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
 
 /**
- * Class UserCrudController
+ * Class BlogCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class UserCrudController extends CrudController
+class BlogCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
-    // use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
-    // use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
-    // use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+
+    use CreateOperation {store as traitStore;}
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -26,9 +32,9 @@ class UserCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\User::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/user');
-        CRUD::setEntityNameStrings('user', 'users');
+        CRUD::setModel(\App\Models\Blog::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/blog');
+        CRUD::setEntityNameStrings('blog', 'blogs');
     }
 
     /**
@@ -39,10 +45,11 @@ class UserCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('name');
-        CRUD::column('email');
-        CRUD::column('phone');
-        CRUD::column('address');
+        CRUD::column('id');
+        CRUD::column('title');
+        CRUD::column('body');
+        CRUD::column('img_path')->label('Post Image');
+        CRUD::column('created_at');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -59,17 +66,37 @@ class UserCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(UserRequest::class);
+        CRUD::setValidation(BlogRequest::class);
 
-        CRUD::field('name');
-        CRUD::field('email');
-        CRUD::field('password');
+        CRUD::field('title');
+        CRUD::field('body');
+        CRUD::field('file')->type('upload')->upload(true)->label('Post Image');
+        
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');
          * - CRUD::addField(['name' => 'price', 'type' => 'number'])); 
          */
+    }
+
+    public function store()
+    {
+        $this->crud->setRequest($this->crud->validateRequest());
+        $this->crud->unsetValidation(); // validation has already been run
+
+        $data = $this->crud->getStrippedSaveRequest();
+
+        $uploadedFileUrl = Cloudinary::uploadFile($data['file']->getRealPath())->getSecurePath();
+
+        $user = Blog::create([
+            'title' => $data['title'],
+            'body' => $data['body'],
+            'img_path' => $uploadedFileUrl,
+        ]);
+    
+
+        return redirect('admin/blog');
     }
 
     /**
