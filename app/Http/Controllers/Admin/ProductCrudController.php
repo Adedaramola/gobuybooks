@@ -134,7 +134,8 @@ class ProductCrudController extends CrudController
         CRUD::field('description');
         CRUD::field('category_id')->size(6);
         CRUD::field('price')->size(6);
+        CRUD::field('audio')->size(6);
         CRUD::field('audio_status')->type('enum')->size(6)->label('Audio Free?');
-        CRUD::field('availability')->type('select_from_array')->options(GlobalVars::AVAILABILITY)->size(6);
+        CRUD::field('availability')->type('select_from_array')->options(GlobalVars::AVAILABILITY);
     }
 }

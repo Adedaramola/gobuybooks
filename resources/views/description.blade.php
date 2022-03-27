@@ -85,9 +85,15 @@
                                         <div class="shopify-payment-button mb-3" data-shopify="payment-button">
                                             <button type="button" class="shopify-payment-button__button shopify-payment-button__button--unbranded read mb-3" onclick="readOnline('{{$product[0]->file_path}}')">Read Online For Free</button>
                                         </div>
+                                        @if($product[0]->audio)
                                         <div class="shopify-payment-button mb-3" data-shopify="payment-button">
+                                            @if($product[0]->audio_status == 'yes')
+                                            <button type="button" class="shopify-payment-button__button shopify-payment-button__button--unbranded listen mb-3">Listen for free</button>
+                                            @else
                                             <button type="button" class="shopify-payment-button__button shopify-payment-button__button--unbranded listen mb-3">Buy Audio</button>
+                                            @endif
                                         </div>
+                                        @endif
                                         <div class="shopify-payment-button" data-shopify="payment-button">
                                             <button type="button" class="shopify-payment-button__button shopify-payment-button__button--unbranded buy">Buy it now</button>
                                         </div>
