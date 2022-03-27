@@ -196,7 +196,7 @@
         <!--End Collection Box slider-->
         
         <!--Logo Slider-->
-        <div class="section logo-section">
+        <!-- <div class="section logo-section">
         	<div class="container">
             	<div class="row">
                 	<div class="col-12 col-sm-12 col-md-12 col-lg-12">
@@ -223,7 +223,7 @@
                 	</div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!--End Logo Slider-->
         
         
@@ -237,49 +237,31 @@
 					    </div>
             		</div>
                 </div>
-            	<div class="row">
-                	<div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                    	<div class="wrap-blog">
-                        	<a href="" class="article__grid-image">
-              					<img src="{{ asset('images/logo/law6.') }}" alt="The Nigerian Legal System" title="The Nigerian Legal System" class="blur-up lazyloaded"/>
-				            </a>
-                            <div class="article__grid-meta article__grid-meta--has-image">
-                                <div class="wrap-blog-inner">
-                                    <h2 class="h3 article__title">
-                                      <a href="">The Nigerian Legal System</a>
-                                    </h2>
-                                    <span class="article__date">Jan 07, 2022</span>
-                                    <div class="rte article__grid-excerpt">
-                                        Lorem ipsum dolor sit amet consectetur adipiscing elit ullamcorper laudantium, totam rem aperiam, eaque ipsa quae ab...
+            	<div class="row justify-content-center mt-4">
+                    @if($blogs->isEmpty())
+                        <h1 class="text-center">No Post In Our Blog</h1>
+                    @else
+                	    @foreach($blogs as $blog)
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="wrap-blog">
+                                <a href="" class="article__grid-image">
+                                    <img src="{{ $blog->img_path }}" alt="{{$blog->title}}" title="{{$blog->title}}" class="blur-up lazyloaded"/>
+                                </a>
+                                <div class="article__grid-meta article__grid-meta--has-image">
+                                    <div class="wrap-blog-inner">
+                                        <h1 class="h3 article__title">
+                                        <a href="">{{$blog->title}}</a>
+                                        </h1>
+                                        <span class="article__date mt-2">{{$blog->created_at}}</span>
+                                        <ul class="list--inline article__meta-buttons">
+                                            <li><a href="/blog/{{$blog->id}}">Read more</a></li>
+                                        </ul>
                                     </div>
-                                    <ul class="list--inline article__meta-buttons">
-                                    	<li><a href="">Read more</a></li>
-                                    </ul>
                                 </div>
-							</div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                    	<div class="wrap-blog">
-                        	<a href="" class="article__grid-image">
-              					<img src="{{ asset('images/logo/others6.') }}" alt="The Smart Money Woman" title="The Smart Money Woman" class="blur-up lazyloaded"/>
-				            </a>
-                            <div class="article__grid-meta article__grid-meta--has-image">
-                                <div class="wrap-blog-inner">
-                                    <h2 class="h3 article__title">
-                                      <a href="">The Smart Money Woman</a>
-                                    </h2>
-                                    <span class="article__date">Jan 02, 2022</span>
-                                    <div class="rte article__grid-excerpt">
-                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab...
-                                    </div>
-                                    <ul class="list--inline article__meta-buttons">
-                                    	<li><a href="">Read more</a></li>
-                                    </ul>
-                                </div>
-							</div>
-                        </div>
-                    </div>
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>
@@ -294,7 +276,7 @@
                         	<li class="display-table-cell">
                             	<i class="icon anm anm-truck-l"></i>
                             	<h5>Free Shipping &amp; Return</h5>
-                            	<span class="sub-text">Free shipping on all US orders</span>
+                            	<span class="sub-text">Free shipping on all Ibadan orders</span>
                             </li>
                           	<li class="display-table-cell">
                             	<i class="icon anm anm-dollar-sign-r"></i>

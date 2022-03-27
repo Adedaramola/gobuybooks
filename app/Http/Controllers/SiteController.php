@@ -86,6 +86,23 @@ class SiteController extends Controller
         }
     }
 
+    public function collection(){
+        $user = Auth::user();
+        return view('collection', ['user' => $user]);
+    }
+
+    public function blogs(){
+        $user = Auth::user();
+        $blogs = Blog::orderBy('id', 'desc')->get();
+        return view('blogs', ['blogs' => $blogs, 'user' => $user]);
+    }
+
+    public function blog($id){
+        $user = Auth::user();
+        $blog = Blog::where('id', $id)->get();
+        return view('blog', ['blog' => $blog, 'user' => $user]);
+    }
+
     public function shop(){
         $user = Auth::user();
         $categories = Category::orderBy('id', 'desc')->get();

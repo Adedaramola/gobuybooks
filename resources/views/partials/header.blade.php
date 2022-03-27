@@ -60,8 +60,8 @@
                         <ul id="siteNav" class="site-nav medium center hidearrow">
                             <li class="lvl1 parent megamenu"><a href="/">Home <i class="anm anm-angle-down-l"></i></a></li>
                             <li class="lvl1 parent megamenu"><a href="/shop">Book Shop <i class="anm anm-angle-down-l"></i></a></li>
-                            <li class="lvl1 parent megamenu"><a href="/collection-page.html">Collections <i class="anm anm-angle-down-l"></i></a></li>
-                            <li class="lvl1 parent megamenu"><a href="#">Contact Us <i class="anm anm-angle-down-l"></i></a></li>
+                            <li class="lvl1 parent megamenu"><a href="/collection">Collections <i class="anm anm-angle-down-l"></i></a></li>
+                            <li class="lvl1 parent megamenu"><a href="/blogs">Blog <i class="anm anm-angle-down-l"></i></a></li>
                         </ul>
                     </nav>
                     <!--End Desktop Menu-->
@@ -109,7 +109,7 @@
         <ul id="MobileNav" class="mobile-nav">
         	<li class="lvl1 parent megamenu"><a href="/">Home <i class="anm anm-plus-l"></i></a></li>
             <li class="lvl1 parent megamenu"><a href="/shop">Book Shop <i class="anm anm-plus-l"></i></a></li>
-        	<li class="lvl1 parent megamenu"><a href="/shop">Product <i class="anm anm-plus-l"></i></a></li>
+        	<li class="lvl1 parent megamenu"><a href="/collection">Collections <i class="anm anm-plus-l"></i></a></li>
       </ul>
 	</div>
 	<!--End Mobile Menu-->

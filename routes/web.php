@@ -28,8 +28,13 @@ Route::get('/shop', [SiteController::class, 'shop']);
 Route::get('/shop/category/{id}', [SiteController::class, 'shopCategory']);
 Route::get('/short-description/{id}', [SiteController::class, 'short_description']);
 
+Route::get('/collection', [SiteController::class, 'collection']);
+
 Route::get('/cart', [SiteController::class, 'cart']);
 
 Route::get('/checkout', [SiteController::class, 'checkout']);
 
 Route::post('/order', [SiteController::class, 'order']);
+
+Route::get('/blogs', [SiteController::class, 'blogs']);
+Route::get('/blog/{id}', [SiteController::class, 'blog']);
