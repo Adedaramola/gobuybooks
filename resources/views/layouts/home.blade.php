@@ -65,14 +65,14 @@
     
     <!-- Including Jquery -->
     <script src="{{asset('/js/vendor/jquery-3.3.1.min.js')}}"></script>
-    <script src="{{asset('/js/vendor/modernizr-3.6.0.min.js')}}"></script>
+    <!-- <script src="{{asset('/js/vendor/modernizr-3.6.0.min.js')}}"></script> -->
     <script src="{{asset('/js/vendor/jquery.cookie.js')}}"></script>
     <script src="{{asset('/js/vendor/wow.min.js')}}"></script>
     <!-- Including Javascript -->
     <script src="{{asset('/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('/js/plugins.js')}}"></script>
-    <script src="{{asset('/js/popper.min.js')}}"></script>
-    <script src="{{asset('/js/lazysizes.js')}}"></script>
+    <!-- <script src="{{asset('/js/popper.min.js')}}"></script> -->
+    <!-- <script src="{{asset('/js/lazysizes.js')}}"></script> -->
     <script src="{{asset('/js/main.js')}}"></script>
     <script src="{{asset('/js/app.js')}}"></script>
     <!--For Newsletter Popup-->
