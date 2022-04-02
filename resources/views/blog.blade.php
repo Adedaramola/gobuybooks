@@ -14,7 +14,11 @@
     	<!--Page Title-->
     	<div class="page section-header text-center">
 			<div class="page-title">
-        		<div class="wrapper"><h1 class="page-width">Blog Post</h1></div>
+                @if($blog->isEmpty())
+        		    <div class="wrapper"><h1 class="page-width">Blog Post</h1></div>
+                @else
+        		    <div class="wrapper"><h1 class="page-width">{{ $blog[0]->title }}</h1></div>
+                @endif
       		</div>
 		</div>
         <!--End Page Title-->
@@ -24,18 +28,16 @@
                 @if($blog->isEmpty())
                     <h1 class="text-center">Invalid Blog Post</h1>
                 @else
-                    <div class="col-sm-12 col-md-6 col-lg-6">
+                    <div class="col-sm-12 col-md-8 col-lg-8">
                         <div class="wrap-blog">
                             <a href="" class="article__grid-image">
                                 <img src="{{ $blog[0]->img_path }}" alt="{{$blog[0]->title}}" title="{{$blog[0]->title}}" class="blur-up lazyloaded"/>
                             </a>
                             <div class="article__grid-meta article__grid-meta--has-image mt-4">
-                                <div class="wrap-blog-inner">
-                                    <h1 class="h3 article__title">
-                                    <a href="">{{$blog[0]->title}}</a>
-                                    </h1>
-                                    <h3>{{$blog[0]->body}}</h3>
-                                    <span class="article__date mt-2">{{$blog[0]->created_at}}</span>
+                                <span class="article__date mt-3">{{$blog[0]->created_at}}</span><br>
+                                <span class="article__date mt-3">@if($blog[0]->author) {{$blog[0]->author}} @else Admin @endif</span>
+                                <div class="wrap-blog-inner mt-3">
+                                    <h3>{{!! $blog[0]->body !!}}</h3>
                                 </div>
                             </div>
                         </div>

@@ -48,6 +48,7 @@ class BlogCrudController extends CrudController
         CRUD::column('id');
         CRUD::column('title');
         CRUD::column('body');
+        CRUD::column('author');
         CRUD::column('img_path')->label('Post Image');
         CRUD::column('created_at');
 
@@ -69,7 +70,8 @@ class BlogCrudController extends CrudController
         CRUD::setValidation(BlogRequest::class);
 
         CRUD::field('title');
-        CRUD::field('body');
+        CRUD::field('body')->type('summernote');
+        CRUD::field('author');
         CRUD::field('file')->type('upload')->upload(true)->label('Post Image');
         
 
@@ -92,6 +94,7 @@ class BlogCrudController extends CrudController
         $user = Blog::create([
             'title' => $data['title'],
             'body' => $data['body'],
+            'author' => $data['author'],
             'img_path' => $uploadedFileUrl,
         ]);
     
@@ -107,6 +110,8 @@ class BlogCrudController extends CrudController
      */
     protected function setupUpdateOperation()
     {
-        $this->setupCreateOperation();
+        CRUD::field('title');
+        CRUD::field('body')->type('summernote');
+        CRUD::field('author');
     }
 }

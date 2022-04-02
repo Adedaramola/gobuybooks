@@ -28,6 +28,7 @@ class BlogRequest extends FormRequest
         return [
             'title' => 'required|min:3|max:255',
             'body' => 'required|min:5',
+            'author' => 'required',
             'file' => 'file|required|mimes:png,jpg,svg,jpeg,gif|max:2048',
         ];
     }
