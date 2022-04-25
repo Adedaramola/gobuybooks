@@ -38,3 +38,5 @@ Route::post('/order', [SiteController::class, 'order']);
 
 Route::get('/blogs', [SiteController::class, 'blogs']);
 Route::get('/blog/{id}', [SiteController::class, 'blog']);
+
+Route::get('/payment', [SiteController::class, 'payment']);

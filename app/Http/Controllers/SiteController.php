@@ -91,6 +91,10 @@ class SiteController extends Controller
         return view('collection', ['user' => $user]);
     }
 
+    public function payment(){
+        return view('payment');
+    }
+
     public function blogs(){
         $user = Auth::user();
         $blogs = Blog::orderBy('id', 'desc')->get();
